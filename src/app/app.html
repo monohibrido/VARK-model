@@ -1,0 +1,100 @@
+<div class="container" [class.bg-quiz]="quizComenzado">
+  <h1>Modelo VARK</h1>
+
+  @if (!quizComenzado && !testFinalizado) {
+    <div class="card">
+      <p class="card-text p-4">
+        No todas las personas aprenden de la misma manera, ¿prefieres ver un video a leer un libro?,
+        ¿prefieres que te expliquen el tema o escuchar un debate a ver un video?, ¿prefieres ver
+        netflix a ver un debate?
+        <br />
+        Descubre cuál es TÚ mejor metodología de aprendizaje, así puedes recibir una guía para poder
+        aumentar tu conocimiento.
+        <br />
+        La sigla <strong>VARK</strong> proviene de V = Visual, A = Auditivo, R = Lecto-Escritura, K
+        = Kinestésico
+      </p>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-success btn-lg" (click)="empezarQuiz()">
+        Comienza aquí
+      </button>
+    </div>
+  }
+
+  @if (quizComenzado) {
+    <div class="quiz-box">
+      <div class="card-body">
+        <h2 class="card-title">Pregunta {{ indiceActual + 1 }}</h2>
+        <p>
+          <strong>{{ preguntas[indiceActual].texto }}</strong>
+        </p>
+
+        <div class="d-grid gap-3">
+          @for (opcion of preguntas[indiceActual].opciones; track opcion.texto) {
+            <label class="list-group-item">
+              <input
+                class="form-check-input me-1"
+                type="checkbox"
+                [checked]="opcion.seleccionada"
+                (change)="opcion.seleccionada = !opcion.seleccionada"
+              />
+              {{ opcion.texto }}
+            </label>
+          }
+        </div>
+        <div class="d-flex justify-content-between gap-2 mt-4">
+          <button
+            class="btn btn-secondary flex-fill"
+            (click)="indiceActual = indiceActual - 1"
+            [disabled]="indiceActual === 0"
+          >
+            Anterior
+          </button>
+
+          <button class="btn btn-primary flex-fill" (click)="siguientePregunta()">
+            {{ indiceActual === preguntas.length - 1 ? 'Finalizar' : 'Siguiente' }}
+          </button>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-danger mt-3" (click)="reiniciarQuiz()">INICIO</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (testFinalizado) {
+    <div class="card text-center p-5 shadow-lg border-0 fade-in">
+      <div class="card-body">
+        <h1 class="display-4 text-primary mb-4">¡Resultado Listo!</h1>
+
+        <div class="resultado-box p-4 bg-light rounded-3 mb-4">
+          <h5 class="fw-bold text-uppercase">{{ resultadoFinal }}</h5>
+          <p class="text-muted mt-2">
+            Este es tu estilo de aprendizaje dominante según el modelo VARK.
+          </p>
+        </div>
+
+        @if (resultadoFinal === 'Visual') {
+          <p>🎨 Te recomendamos usar mapas mentales y diagramas.</p>
+        } @else if (resultadoFinal === 'Auditivo') {
+          <p>🎧 Te recomendamos escuchar podcasts y debates.</p>
+        } @else if (resultadoFinal === 'Lecto-Escritura') {
+          <p>
+            📝 Te recomendamos tomar apuntes detallados, hacer listas y leer textos explicativos.
+          </p>
+        } @else if (resultadoFinal === 'Kinestésico') {
+          <p>
+            🛠️ Te recomendamos aprender haciendo: usa modelos físicos, realiza experimentos o
+            muévete mientras estudias.
+          </p>
+        }
+
+        <button type="button" class="btn btn-dark btn-lg px-5 mt-3" (click)="reiniciarQuiz()">
+          SALIR
+        </button>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,61 @@
+.container {
+  min-height: 100vh;
+  transition: background-color 0.9s ease;
+}
+
+.bg-quiz {
+  background-color: #04cfae;
+  color: #1a1a1a;
+}
+
+h1 {
+  padding-top: 3%;
+  text-align: center;
+  font-family: 'Boldonse', system-ui;
+}
+h2 {
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+}
+h5 {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.d-grid {
+  background-color: #09bb9d;
+  padding: 2%;
+  border-radius: 4%;
+}
+
+.btn-success {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+  font-family: monospace;
+  background-color: #64bd4b;
+  border-color: #64bd4b;
+  color: #000000;
+}
+
+.btn-success:active {
+  background-color: #5cad45;
+  border-color: #5cad45;
+}
+
+.btn-primary {
+  background-color: #2966d6;
+  border-color: #2966d6;
+}
+
+.botones {
+  display: flex;
+}
+
+.card-body {
+  padding-left: 2%;
+}
+
+.card {
+  background-color: #d094e3;
+}

@@ -50,7 +50,7 @@ const PREGUNTAS_INICIALES: PreguntaVARK[] = [
       { texto: 'Le dices cómo llegar o envías un audio.', categoria: 'A', seleccionada: false },
       { texto: 'Le escribes la explicación de como llegar.', categoria: 'R', seleccionada: false },
       {
-        texto: 'Le pides que lo siga en su auto o lo acompañas.',
+        texto: 'Le pides que te siga en tu auto o lo acompañas.',
         categoria: 'K',
         seleccionada: false,
       },

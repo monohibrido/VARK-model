@@ -4,15 +4,14 @@
   @if (!quizComenzado && !testFinalizado) {
     <div class="card">
       <p class="card-text p-4">
-        No todas las personas aprenden de la misma manera, ¿prefieres ver un video a leer un libro?,
-        ¿prefieres que te expliquen el tema o escuchar un debate a ver un video?, ¿prefieres ver
-        netflix a ver un debate?
+        El modelo VARK es una herramienta pedagógica desarrollada por Neil Fleming, que clasifica
+        los estilos de aprendizaje en cuatro modalidades sensoriales principales: Visual, Auditivo,
+        Lectura/Escritura y Kinestésico
         <br />
-        Descubre cuál es TÚ mejor metodología de aprendizaje, así puedes recibir una guía para poder
-        aumentar tu conocimiento.
-        <br />
-        La sigla <strong>VARK</strong> proviene de V = Visual, A = Auditivo, R = Lecto-Escritura, K
-        = Kinestésico
+        <strong
+          >Aunque se pueden tener preferencias marcadas, muchas personas utilizan una combinación de
+          estos estilos (aprendizaje multimodal).</strong
+        >
       </p>
     </div>
 
@@ -65,29 +64,71 @@
   }
 
   @if (testFinalizado) {
-    <div class="card text-center p-5 shadow-lg border-0 fade-in">
-      <div class="card-body">
+    <div class="card p-5 shadow-lg border-0 fade-in">
+      <div class="card-body text-center">
         <h1 class="display-4 text-primary mb-4">¡Resultado Listo!</h1>
 
-        <div class="resultado-box p-4 bg-light rounded-3 mb-4">
+        <div class="resultado-box p-3 bg-light rounded-3 mb-4">
           <h5 class="fw-bold text-uppercase">{{ resultadoFinal }}</h5>
           <p class="text-muted mt-2">
-            Este es tu estilo de aprendizaje dominante según el modelo VARK.
+            @if (resultadoFinal === 'Visual') {
+              <p>
+                Eres del clan de los visuales. <br />La forma en que aprendes está caracterizada por
+                comprender la información al verla o visualizarla mentalmente. <br />
+              </p>
+            } @else if (resultadoFinal === 'Auditivo') {
+              <p>
+                Eres del clan de los auditivos. <br />
+                La forma en que aprendes está caracterizada por comprender la información
+                principalmente al escucharla.
+              </p>
+            } @else if (resultadoFinal === 'Lecto-Escritura') {
+              <p>
+                Eres del clan de lecto-escritura. <br />
+                La forma en que aprendes está caracterizada por captar la información a través de
+                las palabras y el texto.
+              </p>
+            } @else if (resultadoFinal === 'Kinestésico') {
+              <p>
+                Eres del clan de los kinestésicos. <br />La forma en que aprendes está caracterizada
+                por asociar la información a sensaciones, movimientos y experiencias físicas.
+              </p>
+            }
           </p>
         </div>
 
         @if (resultadoFinal === 'Visual') {
-          <p>🎨 Te recomendamos usar mapas mentales y diagramas.</p>
+          <p>
+            🎨 Te recomendamos: <br />
+            -Usar mapas conceptuales y diagramas de flujo. <br />
+            - Prueba creando instrucciones escritas. <br />
+            - Personaliza tus notas con resaltadores y colores para facilitar tu retención y
+            comprensión.
+          </p>
         } @else if (resultadoFinal === 'Auditivo') {
-          <p>🎧 Te recomendamos escuchar podcasts y debates.</p>
+          <p>
+            🎧 Te recomendamos: <br />
+            - Escuchar podcasts y debates. <br />
+            - Pedir las instrucciones verbalmente. <br />
+            - Realizar reflexiones o diálogos con la información a estudiar. <br />
+            - Repasar con presentaciones orales.
+          </p>
         } @else if (resultadoFinal === 'Lecto-Escritura') {
           <p>
-            📝 Te recomendamos tomar apuntes detallados, hacer listas y leer textos explicativos.
+            📝 Te recomendamos: <br />
+            - Tomar apuntes detallados, hacer listas y leer textos explicativos. <br />
+            - Leer libros para la captación de información. <br />
+            - La creación de PowerPoints y folletos en la retención y comprensión. <br />
           </p>
         } @else if (resultadoFinal === 'Kinestésico') {
           <p>
-            🛠️ Te recomendamos aprender haciendo: usa modelos físicos, realiza experimentos o
-            muévete mientras estudias.
+            🛠️ Te recomendamos: <br />
+            -Aprender usando modelos físicos como maquetas, realiza experimentos prácticos o muévete
+            mientras estudias.
+            <br />
+            -Flashcards/tarjetas con información que te ayudan a organizar tu contenido mental.
+            <br />
+            - Ocupa la tecnología a tu favor, las novedades te estimularán.
           </p>
         }
 
